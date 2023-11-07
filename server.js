@@ -28,6 +28,7 @@ app.use(express.static('public')) //dont have to make a public route for assets 
 app.get('/', (req, res) => { //Making a get request (reads) the endpoint, the "/" is the endpoint of the homepage
   console.log("get method")
   db.collection(collectionName).find().toArray((err, result) => {// got to your database find a collection of messages, find() method finds those messages array like object into an array 
+    console.log(result[0]);
     if (err) return console.log(err)// if error console.log error and stop here
     res.render('index.ejs', { blogInfo: result}) // render out response from index.ejs, try to render a template: rendering response into html templateand passes data to the template. The template in this case is the index.ejs 
   })

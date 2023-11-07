@@ -1,1 +1,6 @@
-
+/* 
+.override-auto{
+  margin: auto !important;
+  align-items: center !important;
+  display: inline-block !important;
+} */
