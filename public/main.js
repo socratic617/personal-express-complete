@@ -1,4 +1,30 @@
 var trash = document.getElementsByClassName("trash");
+var update = document.getElementsByClassName("update");
+
+
+Array.from(update).forEach(function(element) {
+      element.addEventListener('click', function(){
+        console.log('my update button works')
+        const idPost = this.parentNode.parentNode.id //960568464584
+        console.log('idpost: ',idPost)
+        const img = this.parentNode.parentNode.childNodes[1].src
+        console.log("this is my image: ",img)
+        const title = this.parentNode.childNodes[1].innerText
+        console.log("this is my title: ",title)
+        const content = this.parentNode.childNodes[3].innerText
+        console.log("this is my content: ",content)
+
+         // Given a form with no id I want to add an id that is the post's id in my mongoDB database "_id"
+        document.querySelector('#yourid').value = idPost;
+        document.querySelector('#modal-title').value = title;
+        document.querySelector('#modal-image').value = img;
+        document.querySelector('#modal-description').value = content;
+
+
+
+        
+      });
+});
 
 
 Array.from(trash).forEach(function(element) {
@@ -19,3 +45,7 @@ Array.from(trash).forEach(function(element) {
         })
       });
 });
+
+
+
+
