@@ -43,9 +43,8 @@ app.post('/items', (req, res) => {
   db.collection(collectionName).insertOne(
     {
       title: req.body.title,
-      date: req.body.date,
       image: req.body.image,
-      description: req.body.description,
+      description: req.body.description
     },
     (err, result) => {
       // inserts a new document (record) into the message collection with hardcoded properties " thumbsUp: 0, thunmbsDown : 0 )"
@@ -60,35 +59,24 @@ app.post('/items', (req, res) => {
 
   //     let startCounterThumbUp = 0;
 
-      console.log(" (put method) : ")
-      console.log(req.body)
-      
-  //     if(req.body.thumbUp !== undefined){
-  //     console.log("thumb up selected")
-  //     startCounterThumbUp  = req.body.thumbUp == null ? 0 : req.body.thumbUp + 1;//ternary deals with like to handle "NaN" aka null in JS deal with it by adding 1 to it or setting the new list item to 0
-    
-  //   } else if(req.body.thumbDown !== undefined ){
+  console.log(" (put method) : ")
+  console.log(req.body)
 
-  //     console.log("thumb down(before): " + req.body.thumbDown)
-  //     startCounterThumbUp = req.body.thumbDown == null ? 0 : req.body.thumbDown - 1;
-  //     console.log("thumb down(after): " + startCounterThumbUp)
 
-  //  //ternary deals with dislike to handle "NaN" aka null in JS deal with it by subtract 1 to it or setting the new list item to 0
-  //     console.log("user selected thumb down");
-  //   }
-  //     db.collection('messages')
-  //     .findOneAndUpdate({name: req.body.name, msg: req.body.msg}, {
-  //       $set: {
-  //         thumbUp:startCounterThumbUp,
-  //       }
-  //     }, {
-  //       sort: {_id: -1},
-  //       upsert: true
-  //     }, (err, result) => {
-  //       if (err) return res.send(err)
-  //       res.send(result)
-  //     })
-    })
+    db.collection(collectionName).findOneAndUpdate({_id: ObjectId(req.body.id)}, {
+    $set: {
+      title: req.body.title,
+      image: req.body.image,
+      description: req.body.description
+    }
+  }, {
+    sort: {_id: -1},
+    upsert: true
+  }, (err, result) => {
+    if (err) return res.send(err)
+    res.send(result)
+  })
+})
 
 
 
