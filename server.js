@@ -3,6 +3,8 @@ const app = express(); // storing the express module
 const bodyParser = require("body-parser"); // bringing in the body parser module. Body parse is middleware( is anything  btwn the request and response) (response handler, primary role is to parse the data from the http request ), helps to tiddy up the request object before
 const MongoClient = require("mongodb").MongoClient; // bringing in MongoDB module and creating a MongoDB Client to connect to the Database
 
+const {ObjectId} = require('mongodb');
+
 var db, collection; // is creating empty variables for db and collection
 
 const url = "mongodb+srv://mongDB:happy123!@cluster0.c1bg23b.mongodb.net/"; // this is the connection string to get to the mongo database/cluster (database) url
@@ -54,7 +56,16 @@ app.post('/items', (req, res) => {
   );
 })
 
-
+app.delete('/blogs', (req, res) => {
+  console.log("delete method")
+  console.log("post id : " , ObjectId(req.body.id))
+  db.collection(collectionName).findOneAndDelete({_id: ObjectId(req.body.id)}, (err, result) => {
+    if (err) return res.send(500, err)
+    console.log("deleted message")
+    res.redirect("/");
+    // res.send('Message deleted!')
+  })
+})
 
 
 
