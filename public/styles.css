@@ -1,6 +1,10 @@
-/* 
-.override-auto{
-  margin: auto !important;
-  align-items: center !important;
-  display: inline-block !important;
-} */
+body {
+  background: url(https://images.rawpixel.com/image_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvdjk5Ni0wMTYta3JvaXI5cWMuanBn.jpg);
+  background-size: 100%;
+}
+
+
+.center-div{
+  width: 100%;
+  margin: auto;
+}

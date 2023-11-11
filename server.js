@@ -47,9 +47,7 @@ app.post('/items', (req, res) => {
       description: req.body.description
     },
     (err, result) => {
-      // inserts a new document (record) into the message collection with hardcoded properties " thumbsUp: 0, thunmbsDown : 0 )"
       if (err) return console.log(err); //if error, console.log error
-      console.log("saved to database"); // if no errors console log saved to database
       res.redirect("/"); // redirect response to home endpoint
     }
   );
@@ -57,13 +55,7 @@ app.post('/items', (req, res) => {
 
  app.put('/blogs', (req, res) => {
 
-  //     let startCounterThumbUp = 0;
-
-  console.log(" (put method) : ")
-  console.log(req.body)
-
-
-    db.collection(collectionName).findOneAndUpdate({_id: ObjectId(req.body.id)}, {
+  db.collection(collectionName).findOneAndUpdate({_id: ObjectId(req.body.id)}, {
     $set: {
       title: req.body.title,
       image: req.body.image,
@@ -76,42 +68,15 @@ app.post('/items', (req, res) => {
     if (err) return res.send(err)
     res.send(result)
   })
+
 })
 
 
-
-
 app.delete('/blogs', (req, res) => {
-  console.log("delete method")
-  console.log("post id : " , ObjectId(req.body.id))
+
   db.collection(collectionName).findOneAndDelete({_id: ObjectId(req.body.id)}, (err, result) => {
     if (err) return res.send(500, err)
     console.log("deleted message")
     res.redirect("/");
-    // res.send('Message deleted!')
   })
 })
-
-
-
-
-
-
-
-
-
-
-// app.post("/messages", (req, res) => {
-//   console.log("post method");
-//   //event handler(ex: here a function i want you to run in the future)// creating request from user//Making a post request (create) to the endpoint, the "/messages" is the endpoint of where the message data will be handled
-//   console.log(req); // console logging the request data
-//   db.collection("messages").insertOne(
-//     { name: req.body.name, msg: req.body.msg, thumbUp: 0, thumbDown: 0 },
-//     (err, result) => {
-//       // inserts a new document (record) into the message collection with hardcoded properties " thumbsUp: 0, thunmbsDown : 0 )"
-//       if (err) return console.log(err); //if error, console.log error
-//       console.log("saved to database"); // if no errors console log saved to database
-//       res.redirect("/"); // redirect response to home endpoint
-//     }
-//   );
-// });
