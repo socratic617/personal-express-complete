@@ -6,6 +6,8 @@ updatePostBtn.addEventListener('click', submitUpdatedPost)
 
 function submitUpdatedPost(){
 
+  console.log("Inside my Update Post method")
+
  let idPost = document.querySelector('#yourid').value;
  let title = document.querySelector('#modal-title').value;
  let img = document.querySelector('#modal-image').value;
@@ -31,10 +33,10 @@ function submitUpdatedPost(){
 Array.from(update).forEach(function(element) {
   element.addEventListener('click', function(){
 
-    const idPost = this.parentNode.parentNode.id 
-    const img = this.parentNode.parentNode.childNodes[1].src
-    const title = this.parentNode.childNodes[1].innerText
-    const content = this.parentNode.childNodes[3].innerText
+    const idPost = this.parentNode.parentNode.parentNode.id 
+    const img = this.parentNode.parentNode.parentNode.childNodes[1].src
+    const title = this.parentNode.parentNode.childNodes[1].innerText
+    const content = this.parentNode.parentNode.childNodes[3].innerText
 
       // Given a form with no id I want to add an id that is the post's id in my mongoDB database "_id"
     document.querySelector('#yourid').value = idPost;
@@ -49,7 +51,7 @@ Array.from(update).forEach(function(element) {
 Array.from(trash).forEach(function(element) {
   element.addEventListener('click', function(){
 
-    const idPost = this.parentNode.parentNode.id
+    const idPost = this.parentNode.parentNode.parentNode.id
 
     fetch('/blogs', {
       method: 'delete',
