@@ -7,7 +7,7 @@ Allow your users to post their own blogs quickly.
 
 **Client:** HTML/CSS, EJS, Javascript, Flowbite, TailwindCSS
 
-**Server:** Node, Express
+**Server:** Node, Express, MongoDB
 
 
 ## Features
