@@ -20,7 +20,7 @@ Allow your users to post their own blogs quickly.
 
 ## App Screenshot
 
-![App ](.public/imgs/project-photo.png)
+![App ](public/imgs/project-photo.png)
 
 
 ## Run Locally
